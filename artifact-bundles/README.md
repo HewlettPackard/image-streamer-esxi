@@ -5,7 +5,7 @@
 
 --------------------------------------------------------------------------------
 	File name	  : HPE-ESXi-2017-03-16.zip
-	Name (in manifest): HPE-ESXi-2017-03-1
+	Name (in manifest): HPE-ESXi-2017-03-16
 	Description	  : Artifact bundle for ESXi 5.x and ESXi 6.x deployment and generalization
 	Dated		  : 2017-03-16 (18:54:45)
 --------------------------------------------------------------------------------
