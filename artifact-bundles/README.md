@@ -1,4 +1,8 @@
-# ESXi 5.x and ESXi 6.x artifacts for ImageStreamer v3.1 release
+# ESXi 5.x and ESXi 6.x artifacts for ImageStreamer v3.0 release
+Note:
+- All artifact bundles in this repo are compatible with ImageStreamer v3.0 release
+- Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
+
 
 HPE-ESXi-2017-08-22-v3.0
    - Removed UUID from esx.conf during generalization
