@@ -1,8 +1,8 @@
 # ESXi 5.x and ESXi 6.x artifacts for ImageStreamer v3.1 release
 
 HPE-ESXi-2017-08-22-v3.0
-   - Remove UUID from esx.conf during generalization
-   - Remove contents of local.sh in onetime.tgz during generalization
+   - Removed UUID from esx.conf during generalization
+   - Removed contents of local.sh in onetime.tgz during generalization
    - Fixed issue with "Management" tag not getting set sometimes on network interface
    - Added vlanid attribute to support network sets   
    - Commented echo of local.sh since it can contain the password
