@@ -1,6 +1,6 @@
 # ESXi 5.x and ESXi 6.x artifacts for ImageStreamer v3.1 release
 ## Note:
-- All artifact bundles in this repo are compatible with ImageStreamer v3.0 release
+- All artifact bundles in this repo are compatible with ImageStreamer v3.1 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
 
 ## Version History:
