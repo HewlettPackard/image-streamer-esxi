@@ -5,8 +5,9 @@
 
 ## Version History:
 
-HPE-ESXi-2017-12-15-v3.1
-   - defect fixes for 4.0 release
+HPE-ESXi-2017-05-10-v4.0
+   - changes to handle correct bootbank after an ESXi patch update
+   - defect fixes
 
 HPE-ESXi-2017-08-22-v3.0
    - Removed UUID from esx.conf during generalization
