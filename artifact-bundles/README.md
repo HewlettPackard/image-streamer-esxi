@@ -3,9 +3,9 @@
 - All artifact bundles in this repo are compatible with ImageStreamer v4.0 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
 - The following ESXi versions are supported
-	-ESXi 5.5
-	-ESXi 6.0
-	-ESXi 6.5
+ -ESXi 5.5
+ -ESXi 6.0
+ -ESXi 6.5
 
 ## Version History:
 
