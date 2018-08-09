@@ -15,7 +15,7 @@ HPE-ESXi-2018-06-27-v4.0
    - MPIO enabled
    - defect fixes
 
-HPE-ESXi-2017-05-10-v4.0
+HPE-ESXi-2018-05-10-v4.0
    - changes to handle correct bootbank after an ESXi patch update
    - defect fixes
 
