@@ -16,6 +16,29 @@
  HPE-ESXi 6.7-2018-08-02-v4.2
    - Artifact Bundle for ESXi 6.7
 
+## Golden Image Creation for ESXi 6.7:
+
+1. Ensure that you have access to ESXi 6.7 ISO file.
+
+1. Create a server profile with “HPE - Foundation 1.0 - create empty OS Volume” as OS Deployment plan and a server hardware of desired hardware type. Set an appropriate value for volume size in MiB units, say 20480 MiB. The HPE Synergy Server will be configured for access to this empty OS Volume.
+
+1. Launch iLO Integrated Remote Console of this server and set the ESXi 6.7 ISO file as virtual CD-ROM/DVD image file. Power on the server.
+
+1. Install ESXi 6.7.
+
+1. To capture the ESXi 6.7 image:
+  
+    1.  Shutdown the server
+
+    1.  Perform an as-is capture using "HPE - Foundation 1.0 - capture OS Volume as is" build plan to create the "as-is" golden image of the OS. (NOTE: There are no generalization - capture scripts for ESXi 6.7)
+
+    1.  Deploy another server with the golden image captured in previous step and build plan of your choice to boot the server.
+
+## Known Issues:
+- In case of ungraceful or forceful shutdown of the server (within an hour of the deployment), there may be a loss of personalization.
+  Please refer to the VMware article for the same: https://kb.vmware.com/s/article/2001780
+  
+
 ## Artifact Bundle Contents:
 
 --------------------------------------------------------------------------------
