@@ -2,14 +2,20 @@
 ## Note:
 - All artifact bundles in this repo are compatible with ImageStreamer v4.2 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
-- The following ESXi versions are supported with HPE - ESXi -2018-07-31-v4.2.zip
+- The following ESXi versions are supported with HPE-ESXi-2019-04-10-v4.2.zip
 	- ESXi 5.5
 	- ESXi 6.0
 	- ESXi 6.5
-- For ESXi 6.7, artifact bundle to be used - HPE-ESXi 6.7-2018-08-02-v4.2
+- For ESXi 6.7, artifact bundle to be used - HPE-ESXi-6.7-2019-04-09-v4.2
 
 ## Version History:
 
+ HPE-ESXi-2019-04-10-v4.2
+   - Modified script to handle HA for full blades - SY660 - with multiple CNA cards
+   
+ HPE-ESXi-6.7-2019-04-09-v4.2
+   - Modified script to handle HA for full blades - SY660 - with multiple CNA cards - for ESXi 6.7
+   
  HPE-ESXi-2018-07-31-v4.2
    - Not unique UUID issue fixed
 
@@ -26,13 +32,51 @@
 
 1. Install ESXi 6.7.
 
+1. Reboot the Compute Blade. [required for the OS to create the state.tgz folder]
+
 1. To capture the ESXi 6.7 image:
   
-    1.  Shutdown the server
+    1.  Shutdown the server gracefully by pressing F12, and shutting it down, or by giving ‘poweroff’ command from SSH console, or by, clicking on the Momentary Press from iLO console of the server.
 
     1.  Perform an as-is capture using "HPE - Foundation 1.0 - capture OS Volume as is" build plan to create the "as-is" golden image of the OS. (NOTE: There are no generalization - capture scripts for ESXi 6.7)
 
     1.  Deploy another server with the golden image captured in previous step and build plan of your choice to boot the server.
+
+1. To install VIBs or updates via virtual media and then capture ESXi 6.7 image:
+
+    1. The golden Image should be captured only from an ESXi OS instance that is not personalized.
+    
+    1. Identify a compute blade to capture the ESXi image. Install the base ESXi ISO if required.
+    
+    1. Convert the ZIP file containing VIBs to be installed into an ISO, using any application available on internet or in linux using the command:
+       - mkisofs –o /tmp/<FileName.iso> /tmp/directory/
+
+    1. Select this ISO file as virtual CD-ROM/DVD image file. 
+    
+    1. SSH to the console and run following commands:
+       - esxcfg-mpath –l | grep –i cd-rom
+       - vmkload_mod iso9660
+       - /sbin/vsish –e set /vmkModules/iso9660/mount <Device Display Name>
+
+    1. To verify the contents:
+       - ls /vmfs/volumes/<Device Display Name>
+
+    1. To install VIB:
+       - esxcli software vib install –d /vmfs/volumes/<.ISO file>
+     
+    1. Unmount CD ROM and unload module:
+       - vsish –e set /vmkModules/iso9660/umount<Device Display Name>
+       - vmkload_mod –u iso9660
+	
+    1. Reboot the Compute Blade.
+    
+    1. Verify the VIBs are installed:
+       - esxcli software vib list
+
+    1. Shutdown the server gracefully by pressing F12, and shutting it down, or by giving ‘poweroff’ command from SSH console, or by, clicking on the Momentary Press button.
+    
+    1. Perform an as-is capture using "HPE - Foundation 1.0 - capture OS Volume as is" build plan to create the "as-is" golden image of the OS. (NOTE: There are no generalization - capture scripts for ESXi 6.7)
+
 
 ## Known Issues:
 - In case of ungraceful or forceful shutdown of the server (within an hour of the deployment), there may be a loss of personalization.
