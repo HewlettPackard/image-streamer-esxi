@@ -86,175 +86,173 @@
 ## Artifact Bundle Contents:
 
 --------------------------------------------------------------------------------
-  
-  	File name: HPE-ESXi-2018-07-31-v4.2.zip
-  	Name (in manifest): HPE - ESXi - 2018-07-31 - v4.2
-  	Description: ImageStreamer artifacts for ESXi 5.x and ESXi 6.x till 6.5. 
-  	Dated: 2018-08-13 (14:49:04)
-	
+
+	            File name: HPE-ESXi-2019-04-10-v4.2.zip
+		Name (in manifest): HPE-ESXi-2019-04-10-v5.0
+		       Description: ImageStreamer artifacts for ESXi 5.x and ESXi 6.x till 6.5. 
+		             Dated: 2019-04-09 (22:07:29)
+
 --------------------------------------------------------------------------------
 
 Build Plans:
 
-	       Name: HPE - ESXi - deploy with multiple management NIC HA config- 2018-07-31 (Type:deploy)
-	Description: Deploy ESXi 5.x - 6.5 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume. 
-
-
-	       Name: HPE - ESXi - generalize full state - 2018-07-31 (Type:capture)
-	Description: Remove personalization settings from ESXi 5.x - 6.5 images.
-	             
-
-	       Name: HPE- ESXi - deploy in single frame non-HA config- 2018-07-31 (Type:deploy)
+	       Name: HPE- ESXi - deploy in single frame non-HA config-autobackup- 2018-07-31 (Type:deploy)
 	Description: Personalize ESXi 5.x - 6.5 image with single management NIC, hostname, domain name, root password and ssh settings. 
+
+	       Name: HPE - ESXi - generalize full state -  2018-07-31 (Type:capture)
+	Description: Remove personalization settings from ESXi 5.x - 6.5 images.
+
+	       Name: HPE - ESXi - deploy with multiple management NIC HA config-autobackup- 2019-04-10 (Type:deploy)
+	Description: Deploy ESXi 5.x - 6.5 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume. 
 
 
 Plan Scripts:
 
-	       Name: HPE - ESXi - mount - 2018-07-31 (general)
-	   FullName: 2497b14d-d9b9-459c-bb45-401d457dc1d6_planscript.json
-	Description: Mount ESXi /bootbank
+	       Name: HPE - ESXi - remove system uuid - 2017-08-02 (capture)
+	   FullName: 0313cfc7-1a60-4720-9a19-d3f5ee2811f4_planscript.json
+	Description: remove system uuid from esx.conf
+
+
+	       Name: HPE - ESXi - configure management 1st NIC- 2018-12-06 (deploy)
+	   FullName: 27e2518e-60c9-4626-ad79-b3e1a30acfd9_planscript.json
+	Description: Configure ESXi host management network
+
+
+	       Name: HPE - ESXi - umount - 2017-03-15 (general)
+	   FullName: 33b3501d-fde7-43d0-900b-3776cfd6e48b_planscript.json
+	Description: Cleanup and unmount file systems
+
+
+	       Name: HPE - ESXi - configure management 2nd NIC HA- 2018-12-06 (deploy)
+	   FullName: 45c2d1a1-49d5-4ff3-a019-2cb306d24797_planscript.json
+	Description: Configure ESXi host management 2nd NIC for HA
 
 
 	       Name: HPE - ESXi - unpack state - 2017-07-07 (general)
-	   FullName: 291851b3-224a-4267-ae71-cad8ce5c805b_planscript.json
+	   FullName: 554a6b51-e010-4056-bd22-009a2c19b30d_planscript.json
 	Description: Copy out and unpack ESXi host state
 
 
-	       Name: HPE - ESXi - mpio - configure iSCSI boot HA - 2018-06-27 (deploy)
-	   FullName: 2b093c6e-2a24-42f7-a017-21eaaa754aad_planscript.json
+	       Name: HPE - ESXi - mpio - configure iSCSI boot HA - 2019-04-10 (deploy)
+	   FullName: 650b97bc-c8ed-4df9-bb3e-772ba0edbfb1_planscript.json
 	Description: Configures HA for iSCSI boot path for ESXi. 
 	             This script can be used in multi frame environment containing a pair of ImageStreamer appliances.
 
 
-	       Name: HPE - ESXi - set password - 2017-03-15 (deploy)
-	   FullName: 35cf64d4-f241-49c0-93e3-b68c6e9df2cd_planscript.json
-	Description: Configure host password
-
-
-	       Name: HPE - ESXi - configure management 1st NIC - 2017-08-22 (deploy)
-	   FullName: 4aef4d00-0606-4658-8437-891c677350db_planscript.json
-	Description: Configure ESXi host management network
-
-
-	       Name: HPE - ESXi - configure management 2nd NIC HA - 2017-07-07 (deploy)
-	   FullName: 6b65ed11-d3cd-4c70-be26-3d55c8bdddad_planscript.json
-	Description: Configure ESXi host management 2nd NIC for HA
-
-
-	       Name: HPE - ESXi - generalize host configuration - 2017-07-12 (capture)
-	   FullName: 7cd73ee8-54b2-48f9-abec-790b214378e3_planscript.json
-	Description: Remove personalization settings from ESXi 5.x and 6.x images
-
-
-	       Name: HPE - ESXi - configure ssh - 2017-12-15 (deploy)
-	   FullName: 9226e3ab-a233-408b-a73c-d366f5a996d0_planscript.json
-	Description: Configure ssh
-
-
-	       Name: HPE - ESXi - remove system uuid - 2017-08-02 (capture)
-	   FullName: a8a346fb-c52d-464e-a019-b0edde46fb36_planscript.json
-	Description: remove system uuid from esx.conf
-
-
-	       Name: HPE - ESXi - umount - 2017-03-15 (general)
-	   FullName: b30faefe-50a8-4637-9fcb-ad6931499795_planscript.json
-	Description: Cleanup and unmount file systems
-
-
 	       Name: HPE - ESXi - repack state - 2017-03-15 (general)
-	   FullName: ce1a6bb8-5899-4c7c-bde4-0d1142751189_planscript.json
+	   FullName: 6d0676fa-3590-43b7-b4a8-53a6c31d8607_planscript.json
 	Description: Pack and replace ESXi host state into ESXi host OS Volume
 
 
 	       Name: HPE - ESXi - generalize onetime - 2017-09-27 (capture)
-	   FullName: d7fc8b12-c802-458c-879f-76ed4360b979_planscript.json
+	   FullName: 964fd0e7-e3c7-480b-8dea-41c3a3b9cbfa_planscript.json
 	Description: Clear the contents of local.sh in onetime.tgz and revert it to default contents
-	
-	
+
+
+	       Name: HPE - ESXi - mount - 2018-12-03 (general)
+	   FullName: b4641fca-8721-4120-be2e-e8c04f8eb37b_planscript.json
+	Description: Mount ESXi /bootbank
+
+
+	       Name: HPE - ESXi - set password - 2017-03-15 (deploy)
+	   FullName: b5d91f26-926d-4652-8d1a-55357572e266_planscript.json
+	Description: Configure host password
+
+
+	       Name: HPE - ESXi - generalize host configuration - 2017-07-12 (capture)
+	   FullName: eaece103-eb8c-4330-89f8-055307b157a7_planscript.json
+	Description: Remove personalization settings from ESXi 5.x and 6.x images
+
+
+	       Name: HPE - ESXi - configure ssh- 2018-12-04 (deploy)
+	   FullName: ee23ca7e-83fa-4553-8afb-18451152c3d0_planscript.json
+	Description: Configure ssh
+
 
 --------------------------------------------------------------------------------
 
-	            File name: HPE-ESXi-6.7-2018-08-02-v4.2.zip
-		Name (in manifest): HPE - ESXi 6.7-2018-08-02-v4.2
+	            File name: HPE-ESXi-6.7-2019-04-09-v4.2.zip
+		Name (in manifest): HPE-ESXi-6.7-2019-04-09-v5.0
 		       Description: ImageStreamer artifacts for ESXi 6.7. 
+		             Dated: 2019-04-09 (11:27:17)
 
 --------------------------------------------------------------------------------
 
 Build Plans:
 
+	       Name: HPE - ESXi 6.7 - deploy with multiple management NIC HA config - 2019-04-09 (Type:deploy)
+	Description: Deploy ESXi 6.7 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume.
+
 	       Name: HPE - ESXi 6.7 - deploy in single frame non-HA config - 2018-08-02 (Type:deploy)
 	Description: Deploy ESXi 6.7 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume. 
-
-	       Name: HPE - ESXi 6.7 - deploy with multiple management NIC HA config - 2018-08-02 (Type:deploy)
-	Description: Deploy ESXi 6.7 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume.
 
 
 Plan Scripts:
 
-	       Name: HPE - ESXi 6.7 - replace initiator IP - 2018-08-02 (deploy)
-	   FullName: 02030147-7d99-4c9d-89b7-625d26576591_planscript.json
-	Description: Build script to replace initiator ip
+	       Name: HPE - ESXi - configure ssh - 2017-12-15 (deploy)
+	   FullName: 1e0878b1-593f-440c-a20b-2a31b89e1ec5_planscript.json
+	Description: Configure ssh
+
+
+	       Name: HPE - ESXi 6.7 - generalize state - 2018-08-02 (general)
+	   FullName: 28c3ed51-d526-4c50-8373-30b0e71941a0_planscript.json
+	Description: Clear the contents of local.sh in state.tgz and revert it to default contents
 
 
 	       Name: HPE - ESXi - mount - 2018-07-31 (general)
-	   FullName: 291b5cd1-f765-4ca6-b3ec-925f58245581_planscript.json
+	   FullName: 2eb0658d-08a8-42f1-acf1-5829fe22de70_planscript.json
 	Description: Mount ESXi /bootbank
 
 
+	       Name: HPE - ESXi - repack state - 2017-03-15 (general)
+	   FullName: 327657f5-8e9c-4997-8039-3ef60486f979_planscript.json
+	Description: Pack and replace ESXi host state into ESXi host OS Volume
+
+
 	       Name: HPE - ESXi - configure management 2nd NIC HA - 2017-07-07 (deploy)
-	   FullName: 3e191459-78f6-469f-8b79-28755e6f7b4c_planscript.json
+	   FullName: 5b10582e-9688-46ea-971a-a74f6580393b_planscript.json
 	Description: Configure ESXi host management 2nd NIC for HA
 
 
-	       Name: HPE - ESXi - configure management 1st NIC - 2017-08-22 (deploy)
-	   FullName: 5d2bd2f0-849e-4af7-a884-cdd6685f13c6_planscript.json
-	Description: Configure ESXi host management network
-
-
-	       Name: HPE - ESXi - mpio - configure iSCSI boot HA - 2018-06-27 (deploy)
-	   FullName: 6c11827d-a130-43ba-be19-4e467a496c58_planscript.json
+	       Name: HPE - ESXi - mpio - configure iSCSI boot HA - 2019-04-09 (deploy)
+	   FullName: 6495f244-c684-4d31-8e1b-5de2b4868f9d_planscript.json
 	Description: Configures HA for iSCSI boot path for ESXi. 
 	             This script can be used in multi frame environment containing a pair of ImageStreamer appliances.
 
 
+	       Name: HPE - ESXi 6.7 - replace initiator IP - 2018-08-02 (deploy)
+	   FullName: 77a1ec7e-8d8d-42d2-8a73-6b74f88fb32a_planscript.json
+	Description: Build script to replace initiator ip
+
+
 	       Name: HPE - ESXi 6.7 - unpack state - 2018-08-02 (general)
-	   FullName: 720c3ca3-74f4-4c7c-9999-65a5eeac2830_planscript.json
+	   FullName: a208cdba-0cae-414c-81e5-725a524bbf1a_planscript.json
 	Description: Copy out and unpack ESXi host state
 
 
-	       Name: HPE - ESXi - umount - 2017-03-15 (general)
-	   FullName: 8bcc6e27-756e-473d-92e5-e49912a5bb0a_planscript.json
-	Description: Cleanup and unmount file systems
-
-
-	       Name: HPE - ESXi 6.7 - remove system uuid - 2018-08-02 (deploy)
-	   FullName: 9a4c3ccd-7bbf-4dc4-b718-a0fe62dfddcf_planscript.json
-	Description: Remove system uuid from esx.conf
-
-
-	       Name: HPE - ESXi - set password - 2017-03-15 (deploy)
-	   FullName: a5a9ac43-6397-4e14-9b26-5e1490fc2fa1_planscript.json
-	Description: Configure host password
-
-
 	       Name: HPE - ESXi 6.7 - clear local - 2018-08-02 (general)
-	   FullName: bd05c371-8647-4044-b5d6-a78a9b86177a_planscript.json
+	   FullName: a8aa951b-43d0-44af-b677-e15537595425_planscript.json
 	Description: Clear the contents of local.sh post personalization
 
 
-	       Name: HPE - ESXi 6.7 - generalize state - 2018-08-02 (general)
-	   FullName: c816f14a-35da-4b70-a68e-d899a7fc2532_planscript.json
-	Description: Clear the contents of local.sh in state.tgz and revert it to default contents
+	       Name: HPE - ESXi - configure management 1st NIC - 2017-08-22 (deploy)
+	   FullName: b8fbc509-ec5c-46c2-b385-26aa50053075_planscript.json
+	Description: Configure ESXi host management network
 
 
-	       Name: HPE - ESXi - repack state - 2017-03-15 (general)
-	   FullName: d4206076-8bd3-4050-a0d1-7f103361e13a_planscript.json
-	Description: Pack and replace ESXi host state into ESXi host OS Volume
+	       Name: HPE - ESXi - umount - 2017-03-15 (general)
+	   FullName: c0330c9c-fb2f-4cb5-8a68-8922963ebbee_planscript.json
+	Description: Cleanup and unmount file systems
 
 
-	       Name: HPE - ESXi - configure ssh - 2017-12-15 (deploy)
-	   FullName: fcfb2525-1e13-475a-a68b-a9abe17a4971_planscript.json
-	Description: Configure ssh
+	       Name: HPE - ESXi - set password - 2017-03-15 (deploy)
+	   FullName: e77cf8a3-f3c4-4e2d-9b01-bc59724ab5dc_planscript.json
+	Description: Configure host password
+
+
+	       Name: HPE - ESXi 6.7 - remove system uuid - 2018-08-02 (deploy)
+	   FullName: f03aab7d-a410-4966-be65-1e7191485d14_planscript.json
+	Description: Remove system uuid from esx.conf
 
 
 
