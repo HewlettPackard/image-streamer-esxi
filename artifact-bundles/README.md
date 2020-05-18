@@ -1,37 +1,40 @@
-# ESXi artifacts for ImageStreamer v5.0 release
+# ESXi 5.x to ESXi 6.5 and ESXi 6.7 to ESXi 7.0 artifacts for ImageStreamer v5.2 release
 ## Note:
-- All artifact bundles in this repo are compatible with ImageStreamer v5.0 release
+- For versions of ESXi 5.x to ESXi 6.5 Please use HPE-ESXi-xxxx-xx-xx-v5.2.zip Artifact Bundle
+- For versions of ESXi 6.7 and onwards Please use HPE-ESXi-6.7-xxxx-xx-xx-v5.2.zip Artifact Bundle
+- All artifact bundles in this repo are compatible with ImageStreamer v5.2 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
 - The following ESXi versions are supported
 	- ESXi 6.0 (ESXi 6.0 U2, ESXi 6.0 U3) 
 	- ESXi 6.5 (ESXi 6.5, ESXi 6.5 U1, ESXi 6.5 U2)
 	- ESXi 6.7 (ESXi 6.7, ESXi 6.7 U1, ESXi 6.7 U2, ESXi 6.7 U3)
+	- ESXi 7.0 (ESXi 7.0)
 
 ## Version History:
+HPE-ESXi-2019-08-26-v5.2.zip
+   - Modified MPIO script to remove default vmk0 - remove old MAC and portID
+   
+HPE-ESXi-6.7-2020-03-30-v5.2.zip
+   - Modified scrip to remove default vSwitch and vmnic created on GI captured from i3s deployed node	
+   - Has corrective action as per VMware knowledgebase 2148321 for remounting bootbank from /tmp to /sda
 
-HPE-ESXi-2019-08-26-v5.0
-   - ESXi artifact bundle for versions uptil 6.5
-
-HPE-ESXi-6.7-2019-07-24-v5.0
-   - ESXi artifact bundle for versions 6.7 and above
-
-## Golden Image creation for ESXi 6.7:
+## Golden Image creation for ESXi 6.7/7.0:
 
 An Image Streamer Golden Image for ESXi 6.7 is to be captured ‘as is’, without any generalization scripts. This also introduces a constraint that the ESXi 6.7 image to be captured, shouldn’t contain any personalization. 
 Any personalization, if done on the host before capturing the image will be retained and should be overwritten during the subsequent deployments. 
 
 
-1. Ensure that you have access to ESXi 6.7 ISO file.
+1. Ensure that you have access to ESXi 6.7/7.0 ISO file.
 
 1. Create a server profile with “HPE - Foundation 1.0 - create empty OS Volume” as OS Deployment plan and a server hardware of desired hardware type. Set an appropriate value for volume size in MiB units, say 20480 MiB. The HPE Synergy Server will be configured for access to this empty OS Volume.
 
-1. Launch iLO Integrated Remote Console of this server and set the ESXi 6.7 ISO file as virtual CD-ROM/DVD image file. Power on the server.
+1. Launch iLO Integrated Remote Console of this server and set the ESXi 6.7/7.0 ISO file as virtual CD-ROM/DVD image file. Power on the server.
 
-1. Install ESXi 6.7.
+1. Install ESXi 6.7/7.0.
 
 1. Reboot the Compute Blade. [required for the OS to create the state.tgz folder]
 
-1. To capture the ESXi 6.7 image:
+1. To capture the ESXi 6.7/7.0 image:
   
     1.  Shutdown the server gracefully by pressing F12, and shutting it down, or by giving ‘poweroff’ command from SSH console, or by, clicking on the Momentary Press from iLO console of the server.
 
@@ -39,7 +42,7 @@ Any personalization, if done on the host before capturing the image will be reta
 
     1.  Deploy another server with the golden image captured in previous step and build plan of your choice to boot the server.
 
-1. To install VIBs or updates via virtual media and then capture ESXi 6.7 image:
+1. To install VIBs or updates via virtual media and then capture ESXi 6.7/7.0 image:
 
     1. The golden Image should be captured only from an ESXi OS instance that is not personalized.
     
@@ -72,44 +75,21 @@ Any personalization, if done on the host before capturing the image will be reta
 
     1. Shutdown the server gracefully by pressing F12, and shutting it down, or by giving ‘poweroff’ command from SSH console, or by, clicking on the Momentary Press button.
     
-    1. Perform an as-is capture using "HPE - Foundation 1.0 - capture OS Volume as is" build plan to create the "as-is" golden image of the OS. (NOTE: There are no generalization - capture scripts for ESXi 6.7)
+    1. Perform an as-is capture using "HPE - Foundation 1.0 - capture OS Volume as is" build plan to create the "as-is" golden image of the OS. (NOTE: There are no generalization - capture scripts for ESXi 6.7/7.0)
 
 Note: The ports on which the physical NICs are configured for various connections defined in sever-profile/ server-profile template, before capturing the image, will be retained. Please ensure to use the same ports for subsequent deployments.
 
-## Golden Image creation for ESXi 6.x(uptill ESXi 6.5):
-
-An Image Streamer Golden Image for ESXi 6.5 and versions below ESXi 6.5 is to be captured using generalization scripts. 
-
-1. Ensure that you have access to ESXi 6.x(uptill ESXi 6.5) ISO file.
-
-1. Create a server profile with “HPE - Foundation 1.0 - create empty OS Volume” as OS Deployment plan and a server hardware of desired hardware type. Set an appropriate value for volume size in MiB units, say 20480 MiB. The HPE Synergy Server will be configured for access to this empty OS Volume.
-
-1. Launch iLO Integrated Remote Console of this server and set the ESXi 6.x ISO file as virtual CD-ROM/DVD image file. Power on the server.
-
-1. Install ESXi 6.x(uptill ESXi 6.5).
-
-1. Reboot the Compute Blade.
-
-1. To capture the ESXi 6.x(uptill ESXi 6.5) image:
-  
-    1.  Shutdown the server gracefully by pressing F12, and shutting it down, or by giving ‘poweroff’ command from SSH console, or by, clicking on the Momentary Press from iLO console of the server.
-
-    1.  Perform a capture using "HPE - ESXi - generalize full state - 2018-12-03" build plan to create the golden image of the OS. 
-    ESXi update using VUM is supported. Please make sure you set the minimum personalization required for the host to be added to vCenter.
-
-    1.  Deploy another server with the golden image captured in previous step and build plan of your choice to boot the server.
-    
 ## Known Issues:
 - In case of ungraceful or forceful shutdown of the server (within an hour of the deployment), there may be a loss of personalization.
   Please refer to the VMware article for the same: https://kb.vmware.com/s/article/2001780
   
-  
+
 ## Artifact Bundle Contents:
 
 --------------------------------------------------------------------------------
 
-	            File name: HPE-ESXi-2019-08-26-v5.0.zip
-		Name (in manifest): HPE-ESXi-2019-08-26-v5.0
+	            File name: HPE-ESXi-2019-08-26-v5.1.zip
+		Name (in manifest): HPE-ESXi-2019-08-26-v5.1
 		       Description: ImageStreamer artifacts for ESXi 5.x and ESXi 6.x till 6.5. 
 		             Dated: 2019-08-26 (07:06:22)
 
@@ -194,8 +174,8 @@ Plan Scripts:
 
 --------------------------------------------------------------------------------
 
-	            File name: HPE-ESXi-6.7-2019-07-24-v5.0.zip
-		Name (in manifest): HPE-ESXi-6.7-2019-07-24-v5.0
+	            File name: HPE-ESXi-6.7-2019-07-24-v5.1.zip
+		Name (in manifest): HPE-ESXi-6.7-2019-07-24-v5.1
 		       Description: ImageStreamer artifacts for ESXi 6.7. 
 		             Dated: 2019-08-26 (07:39:09)
 
@@ -281,4 +261,8 @@ Plan Scripts:
 	       Name: HPE - ESXi - configure management 1st NIC - 2017-08-22 (deploy)
 	   FullName: fed65a25-4f98-4c00-af45-e298e35545bc_planscript.json
 	Description: Configure ESXi host management network
+
+
+
+
 
