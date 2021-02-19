@@ -91,7 +91,7 @@ Note: The ports on which the physical NICs are configured for various connection
 --------------------------------------------------------------------------------
 
                     File name: HPE-ESXi-2020-12-10-v5.4.zip
-                Name (in manifest): HPE-ESXi-2020-12-10-v5.2
+                Name (in manifest): HPE-ESXi-2020-12-10-v5.4
                        Description: ImageStreamer artifacts for ESXi 5.x and ESXi 6.x till 6.5. (c) Copyright 2018-2020
 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not
 use this file except in compliance with the License
