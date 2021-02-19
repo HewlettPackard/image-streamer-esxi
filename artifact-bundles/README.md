@@ -15,11 +15,9 @@ HPE-ESXi-2020-12-10-v5.4.zip
    - Modified MPIO script to remove default vmk0 - remove old MAC and portID
    - Plan script change to handle attributes when GI with multiple updates is used.
 
-HPE-ESXi-6.7-2020-10-27-v5.4.zip
+HPE-ESXi-6.7-2021-01-21-v5.4.zip
    - Modified script to remove default vSwitch and vmnic created on GI captured from i3s deployed node	
    - Has corrective action as per VMware knowledgebase 2148321 for remounting bootbank from /tmp to /sda
-
-HPE-ESXi-6.7-2021-01-21-v5.4.zip
    - Modified iBFT script to handle iSCSI path DEAD issue when a non-HA build plan with one Deployment connection is used for deployment.
 
 ## Golden Image creation for ESXi 6.7/7.0:
