@@ -19,6 +19,9 @@ HPE-ESXi-6.7-2020-10-27-v5.4.zip
    - Modified script to remove default vSwitch and vmnic created on GI captured from i3s deployed node	
    - Has corrective action as per VMware knowledgebase 2148321 for remounting bootbank from /tmp to /sda
 
+HPE-ESXi-6.7-2021-01-21-v5.4.zip
+   - Modified iBFT script to handle iSCSI path DEAD issue when a non-HA build plan with one Deployment connection is used for deployment.
+
 ## Golden Image creation for ESXi 6.7/7.0:
 
 An Image Streamer Golden Image for ESXi 6.7 is to be captured ‘as is’, without any generalization scripts. This also introduces a constraint that the ESXi 6.7 image to be captured, shouldn’t contain any personalization. 
@@ -184,94 +187,103 @@ Plan Scripts:
 
 
 
+
+
+
+
 --------------------------------------------------------------------------------
 
-                    File name: HPE-ESXi-6.7-2020-10-27-v5.4.zip
-                Name (in manifest): HPE-ESXi-6.7-2020-10-27-v5.4
-                       Description: ImageStreamer artifacts for ESXi 6.7. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance with the License
-                             Dated: 2020-09-08 (09:13:34)
+                    File name: HPE-ESXi-6.7-2021-01-21-v5.4.zip
+                Name (in manifest): HPE-ESXi-6.7-2021-01-21-v5.4
+                       Description: Artifacts to verify Image Streamer installation and configuration. (c) Copyright 2017 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance.
+                             Dated: 2021-02-19 (07:16:57)
 
 --------------------------------------------------------------------------------
 
 Build Plans:
 
-               Name: HPE - ESXi 6.7 - deploy in single frame non-HA config - 2020-03-27 (Type:deploy)
-        Description: Deploy ESXi 6.7 in a single-frame environment containing one ImageStreamer appliance. This buildplan does not configure HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the "License"); ...
-
-
                Name: HPE - ESXi 6.7 - deploy with multiple management NIC HA config - 2020-03-27 (Type:deploy)
         Description: Deploy ESXi 6.7 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the "License"); ...
+
+
+               Name: HPE - ESXi 6.7 - deploy in single frame non-HA config - 2021-01-21 (Type:deploy)
+        Description: Deploy ESXi 6.7 in a single-frame environment containing one ImageStreamer appliance. This buildplan does not configure HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the "License"); ...
 
 
 
 Plan Scripts:
 
-               Name: HPE - ESXi 6.7 - remove host-server IP - 2019-07-19 (deploy)
-           FullName: 0ea4b06b-df67-48b2-98a7-811b6dfba632_planscript.json
-        Description: Removing the host IP, server IP and the host key
-
-
-               Name: HPE - ESXi - configure management 1st NIC - 2017-08-22 (deploy)
-           FullName: 296a98a0-1a35-4475-829f-5d97b4b0e8d6_planscript.json
-        Description: Configure ESXi host management network
-
-
-               Name: HPE - ESXi - umount - 2017-03-15 (general)
-           FullName: 401ac40b-bbcb-4ef0-8f5c-21a81a006d51_planscript.json
-        Description: Cleanup and unmount file systems
-
-
-               Name: HPE - ESXi 6.7 - remove system uuid - 2018-08-02 (deploy)
-           FullName: 444f97ba-0a77-4a7e-837d-55d9c45647d8_planscript.json
-        Description: Remove system uuid from esx.conf
-
-
-               Name: HPE - ESXi - configure management 2nd NIC HA - 2017-07-07 (deploy)
-           FullName: 5e8fdb72-35de-48f8-b23d-cd5ddeb5d81f_planscript.json
-        Description: Configure ESXi host management 2nd NIC for HA
-
-
-               Name: HPE - ESXi - mount - 2018-12-03 (general)
-           FullName: 80b0564c-2569-42ed-aabf-9b51ffd72e0d_planscript.json
-        Description: Mount ESXi /bootbank
-
-
-               Name: HPE - ESXi 6.7 - generalize state - 2020-03-27 (general)
-           FullName: 84b2b367-418b-4038-9a92-a4751f30f411_planscript.json
-        Description: Clear the contents of local.sh in state.tgz and revert it to default contents. Check /tmp/hpe.log for all the deleted entries
-
-
                Name: HPE - ESXi - repack state - 2017-03-15 (general)
-           FullName: 862bc3d5-e068-44cc-a3f5-704957340753_planscript.json
+           FullName: 0782a5de-9e0a-4c2d-b9f5-ac70284af377_planscript.json
         Description: Pack and replace ESXi host state into ESXi host OS Volume
 
 
-               Name: HPE - ESXi - mpio - configure iSCSI boot HA - 2020-03-27 (deploy)
-           FullName: 88fb759e-a5b0-4e4a-81f7-be2ae4a1f77a_planscript.json
-        Description: Configures HA for iSCSI boot path for ESXi.
-                     This script can be used in multi frame environment containing a pair of ImageStreamer appliances.
+               Name: HPE - ESXi - umount - 2017-03-15 (general)
+           FullName: 0bc7c183-4054-4a31-a09e-932c46ca6d8c_planscript.json
+        Description: Cleanup and unmount file systems
 
 
-               Name: HPE - ESXi - set password - 2017-03-15 (deploy)
-           FullName: 8c1229c8-d378-48b9-9fc6-e04f316bb940_planscript.json
-        Description: Configure host password
+               Name: HPE - ESXi 6.7 - generalize state - 2020-03-27 (general)
+           FullName: 118a02cd-528a-401b-ad98-36b72614b287_planscript.json
+        Description: Clear the contents of local.sh in state.tgz and revert it to default contents. Check /tmp/hpe.log for all the deleted entries
 
 
-               Name: HPE - ESXi 6.7 - replace initiator IP - 2018-08-02 (deploy)
-           FullName: 9bc882bf-7c7b-4903-87fc-a44c28ab492e_planscript.json
-        Description: Build script to replace initiator ip
-
-
-               Name: HPE - ESXi 6.7 - unpack state - 2018-08-02 (general)
-           FullName: b71c7601-8d2d-4e40-87ee-78e505b4b0ed_planscript.json
-        Description: Copy out and unpack ESXi host state
+               Name: HPE - ESXi 6.7 - remove system uuid - 2018-08-02 (deploy)
+           FullName: 14193a80-58e9-44d9-ab48-0d73c703ea73_planscript.json
+        Description: Remove system uuid from esx.conf
 
 
                Name: HPE - ESXi 6.7 - clear local - 2020-03-27 (general)
-           FullName: c074ee7e-244e-4c4f-bd58-69ad605d9b3f_planscript.json
+           FullName: 3488054a-1951-422a-ba79-92f46907edc4_planscript.json
         Description: Clear the contents of local.sh post personalization. Corrects the mount point. Refer VMware knowledgebase 2148321 for details
 
 
                Name: HPE - ESXi - configure ssh - 2017-12-15 (deploy)
-           FullName: f655cdae-c6b1-4df0-be73-f554043be7bf_planscript.json
+           FullName: 3d52cef4-f33a-4d03-a7f9-96c364d72bf7_planscript.json
         Description: Configure ssh
+
+
+               Name: HPE - ESXi 6.7 - unpack state - 2018-08-02 (general)
+           FullName: 4c6decf9-448b-44af-8cd1-76ed6157e3be_planscript.json
+        Description: Copy out and unpack ESXi host state
+
+
+               Name: HPE - ESXi  - configure iSCSI connection non-HA - 2021-01-21 (deploy)
+           FullName: 74d18598-0105-4a4b-94b7-a846019d0a9b_planscript.json
+        Description: Configures non-HA iSCSI boot path for ESXi. This script can be used in single frame environment containing one ImageStreamer appliance.
+
+
+               Name: HPE - ESXi 6.7 - replace initiator IP - 2018-08-02 (deploy)
+           FullName: 7544865e-b768-4886-82ae-5ad3186a7f8f_planscript.json
+        Description: Build script to replace initiator ip
+
+
+               Name: HPE - ESXi 6.7 - remove host-server IP - 2019-07-19 (deploy)
+           FullName: 76ad5e0b-f272-4de1-930d-6a91fa10f429_planscript.json
+        Description: Removing the host IP, server IP and the host key
+
+
+               Name: HPE - ESXi - set password - 2017-03-15 (deploy)
+           FullName: 7c2a7ad5-48b9-4b4b-986a-36bb57fea3f3_planscript.json
+        Description: Configure host password
+
+
+               Name: HPE - ESXi - mount - 2018-12-03 (general)
+           FullName: 8600aeab-f365-4ace-8863-e17f250b6b89_planscript.json
+        Description: Mount ESXi /bootbank
+
+
+               Name: HPE - ESXi - configure management 1st NIC - 2017-08-22 (deploy)
+           FullName: 8a67408f-b4db-479c-a229-5d7aa2920707_planscript.json
+        Description: Configure ESXi host management network
+
+
+               Name: HPE - ESXi - mpio - configure iSCSI boot HA - 2020-03-27 (deploy)
+           FullName: b8c0699a-dfdc-49df-9746-a5f39ad350b5_planscript.json
+        Description: Configures HA for iSCSI boot path for ESXi.
+                     This script can be used in multi frame environment containing a pair of ImageStreamer appliances.
+
+
+               Name: HPE - ESXi - configure management 2nd NIC HA - 2017-07-07 (deploy)
+           FullName: c95da095-047e-430e-94c9-283ae34d18bb_planscript.json
+        Description: Configure ESXi host management 2nd NIC for HA
