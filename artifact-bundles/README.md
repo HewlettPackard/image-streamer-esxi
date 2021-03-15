@@ -1,8 +1,8 @@
-# ESXi 5.x to ESXi 6.5 and ESXi 6.7 to ESXi 7.0 artifacts for ImageStreamer v5.4 release
+# ESXi 5.x to ESXi 6.5 and ESXi 6.7 to ESXi 7.0 artifacts for ImageStreamer v6.00 release
 ## Note:
-- For versions of ESXi 5.x to ESXi 6.5 Please use HPE-ESXi-xxxx-xx-xx-v5.4.zip Artifact Bundle
-- For versions of ESXi 6.7 and onwards Please use HPE-ESXi-6.7-xxxx-xx-xx-v5.4.zip Artifact Bundle
-- All artifact bundles in this repo are compatible with ImageStreamer v5.4 release
+- For versions of ESXi 5.x to ESXi 6.5 Please use HPE-ESXi-xxxx-xx-xx-v6.00.zip Artifact Bundle
+- For versions of ESXi 6.7 and onwards Please use HPE-ESXi-6.7-xxxx-xx-xx-v6.00.zip Artifact Bundle
+- All artifact bundles in this repo are compatible with ImageStreamer v6.00 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
 - The following ESXi versions are supported
 	- ESXi 6.0 (ESXi 6.0 U2, ESXi 6.0 U3) 
@@ -11,13 +11,11 @@
 	- ESXi 7.0 (ESXi 7.0)
 
 ## Version History:
-HPE-ESXi-2020-12-10-v5.4.zip
+HPE-ESXi-2020-12-10-v6.00.zip
    - Modified MPIO script to remove default vmk0 - remove old MAC and portID
    - Plan script change to handle attributes when GI with multiple updates is used.
 
-HPE-ESXi-6.7-2021-01-21-v5.4.zip
-   - Modified script to remove default vSwitch and vmnic created on GI captured from i3s deployed node	
-   - Has corrective action as per VMware knowledgebase 2148321 for remounting bootbank from /tmp to /sda
+HPE-ESXi-6.7-2021-01-21-v6.00.zip
    - Modified iBFT script to handle iSCSI path DEAD issue when a non-HA build plan with one Deployment connection is used for deployment.
 
 ## Golden Image creation for ESXi 6.7/7.0:
@@ -90,11 +88,9 @@ Note: The ports on which the physical NICs are configured for various connection
 
 --------------------------------------------------------------------------------
 
-                    File name: HPE-ESXi-2020-12-10-v5.4.zip
-                Name (in manifest): HPE-ESXi-2020-12-10-v5.4
-                       Description: ImageStreamer artifacts for ESXi 5.x and ESXi 6.x till 6.5. (c) Copyright 2018-2020
-Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not
-use this file except in compliance with the License
+                    File name: HPE-ESXi-2020-12-10-v6.00.zip
+                Name (in manifest): HPE-ESXi-2020-12-10-v5.2
+                       Description: ImageStreamer artifacts for ESXi 5.x and ESXi 6.x till 6.5. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance with the License
                              Dated: 2020-12-10 (15:28:13)
 
 --------------------------------------------------------------------------------
@@ -102,21 +98,16 @@ use this file except in compliance with the License
 Build Plans:
 
                Name: HPE- ESXi - deploy in single frame non-HA config-2020-12-10 (Type:deploy)
-        Description: Personalize ESXi 5.x - 6.5 image with single management NIC, hostname, domain name, root password a
-nd ssh settings. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, V
-ersion 2.0  (the "License");...
+        Description: Personalize ESXi 5.x - 6.5 image with single management NIC, hostname, domain name, root password and ssh settings. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0  (the "License");...
 
 
                Name: HPE - ESXi - generalize full state -  2020-12-10 (Type:capture)
         Description: Remove personalization settings from ESXi 5.x - 6.5 images.
-                     (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache Licens
-e, Version 2.0 (the "License"); ...
+                     (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the "License"); ...
 
 
                Name: HPE - ESXi - deploy with multiple management NIC HA config-2020-12-10 (Type:deploy)
-        Description: Deploy ESXi 5.x - 6.5 in a multi-frame environment containing a pair of ImageStreamer appliances. T
-his buildplan configures HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2020 Hewlett Packard Enterpris
-e Development LP. Licensed under the Apache License, Version 2.0  (the "License");...
+        Description: Deploy ESXi 5.x - 6.5 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0  (the "License");...
 
 
 
@@ -185,13 +176,9 @@ Plan Scripts:
 
 
 
-
-
-
-
 --------------------------------------------------------------------------------
 
-                    File name: HPE-ESXi-6.7-2021-01-21-v5.4.zip
+                    File name: HPE-ESXi-6.7-2021-01-21-v6.00.zip
                 Name (in manifest): HPE-ESXi-6.7-2021-01-21-v5.4
                        Description: Artifacts to verify Image Streamer installation and configuration. (c) Copyright 2017 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance.
                              Dated: 2021-02-19 (07:16:57)
