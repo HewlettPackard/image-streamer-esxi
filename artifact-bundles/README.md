@@ -179,7 +179,7 @@ Plan Scripts:
 --------------------------------------------------------------------------------
 
                     File name: HPE-ESXi-6.7-2021-01-21-v6.00.zip
-                Name (in manifest): HPE-ESXi-6.7-2021-01-21-v5.4
+                Name (in manifest): HPE-ESXi-6.7-2021-01-21-v6.00
                        Description: Artifacts to verify Image Streamer installation and configuration. (c) Copyright 2017 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance.
                              Dated: 2021-02-19 (07:16:57)
 
