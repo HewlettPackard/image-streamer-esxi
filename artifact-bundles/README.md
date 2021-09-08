@@ -1,6 +1,6 @@
-# ESXi 5.x to ESXi 6.5 and ESXi 6.7 to ESXi 7.0 artifacts for ImageStreamer v6.10 release
+# ESXi 6.5 and ESXi 6.7 to ESXi 7.0 artifacts for ImageStreamer v6.10 release
 ## Note:
-- For versions of ESXi 5.x to ESXi 6.5 Please use HPE-ESXi-xxxx-xx-xx-v6.10.zip Artifact Bundle
+- For versions of ESXi 6.5 Please use HPE-ESXi-xxxx-xx-xx-v6.10.zip Artifact Bundle
 - For versions of ESXi 6.7 and onwards Please use HPE-ESXi-6.7-xxxx-xx-xx-v6.10.zip Artifact Bundle
 - For versions of ESXi 7.0 Update 2 and onwards Please use HPE-ESXi-7.0-xxxx-xx-xx-v6.10.zip Artifact Bundle
 - All artifact bundles in this repo are compatible with ImageStreamer v6.10 release
@@ -91,6 +91,25 @@ Note: The ports on which the physical NICs are configured for various connection
 ## Known Issues:
 - In case of ungraceful or forceful shutdown of the server (within an hour of the deployment), there may be a loss of personalization.
   Please refer to the VMware article for the same: https://kb.vmware.com/s/article/2001780
+  
+- When "Virtual NIC" in iLO is enabled deployment will fail, the iLO Virtual NIC needs to be disabled for a successful deployment, which can be done from the UI of iLO page under Security tab -> Access Settings tab -> edit the Network section -> and remove the checkmark from the iLO Virtual NIC. Once this is done, select the “Reset iLO” button at the top of the page to allow this setting to take effect.
+
+	The iLO virtual nic is discussed in the following customer advisory:
+	https://support.hpe.com/hpesc/public/docDisplay?docLocale=en_US&docId=a00104665en_us
+
+	Alternatively, the REST API call to disable this is: 
+	
+	PATCH /redfish/v1/Managers/{managerId}/
+
+		{
+		    "Oem": {
+			"Hpe": {
+			    "VirtualNICEnabled": false
+			}	
+		    }
+		}
+		
+     Ref: https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/?shell#using-the-virtual-nic
   
 
 ## Artifact Bundle Contents:
