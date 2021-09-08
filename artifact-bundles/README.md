@@ -1,6 +1,6 @@
-# ESXi 5.x to ESXi 6.5 and ESXi 6.7 to ESXi 7.0 artifacts for ImageStreamer v5.4 release
+# ESXi 6.5 and ESXi 6.7 to ESXi 7.0 artifacts for ImageStreamer v5.4 release
 ## Note:
-- For versions of ESXi 5.x to ESXi 6.5 Please use HPE-ESXi-xxxx-xx-xx-v5.4.zip Artifact Bundle
+- For versions of ESXi 6.5 Please use HPE-ESXi-xxxx-xx-xx-v5.4.zip Artifact Bundle
 - For versions of ESXi 6.7 and onwards Please use HPE-ESXi-6.7-xxxx-xx-xx-v5.4.zip Artifact Bundle
 - All artifact bundles in this repo are compatible with ImageStreamer v5.4 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
@@ -84,6 +84,24 @@ Note: The ports on which the physical NICs are configured for various connection
 - In case of ungraceful or forceful shutdown of the server (within an hour of the deployment), there may be a loss of personalization.
   Please refer to the VMware article for the same: https://kb.vmware.com/s/article/2001780
   
+- When "Virtual NIC" in iLO is enabled deployment will fail, the iLO Virtual NIC needs to be disabled for a successful deployment, which can be done from the UI of iLO page under Security tab -> Access Settings tab -> edit the Network section -> and remove the checkmark from the iLO Virtual NIC. Once this is done, select the “Reset iLO” button at the top of the page to allow this setting to take effect.
+
+	The iLO virtual nic is discussed in the following customer advisory:
+	https://support.hpe.com/hpesc/public/docDisplay?docLocale=en_US&docId=a00104665en_us
+
+	Alternatively, the REST API call to disable this is: 
+	
+	PATCH /redfish/v1/Managers/{managerId}/
+
+		{
+		    "Oem": {
+			"Hpe": {
+			    "VirtualNICEnabled": false
+			}	
+		    }
+		}
+		
+     Ref: https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/?shell#using-the-virtual-nic  
 
 ## Artifact Bundle Contents:
 
@@ -91,7 +109,7 @@ Note: The ports on which the physical NICs are configured for various connection
 
                     File name: HPE-ESXi-2020-12-10-v5.4.zip
                 Name (in manifest): HPE-ESXi-2020-12-10-v5.4
-                       Description: ImageStreamer artifacts for ESXi 5.x and ESXi 6.x till 6.5. (c) Copyright 2018-2020
+                       Description: ImageStreamer artifacts for ESXi 6.5. (c) Copyright 2018-2020
 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not
 use this file except in compliance with the License
                              Dated: 2020-12-10 (15:28:13)
@@ -101,19 +119,19 @@ use this file except in compliance with the License
 Build Plans:
 
                Name: HPE- ESXi - deploy in single frame non-HA config-2020-12-10 (Type:deploy)
-        Description: Personalize ESXi 5.x - 6.5 image with single management NIC, hostname, domain name, root password a
+        Description: Personalize ESXi 6.5 image with single management NIC, hostname, domain name, root password a
 nd ssh settings. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, V
 ersion 2.0  (the "License");...
 
 
                Name: HPE - ESXi - generalize full state -  2020-12-10 (Type:capture)
-        Description: Remove personalization settings from ESXi 5.x - 6.5 images.
+        Description: Remove personalization settings from ESXi 6.5 images.
                      (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache Licens
 e, Version 2.0 (the "License"); ...
 
 
                Name: HPE - ESXi - deploy with multiple management NIC HA config-2020-12-10 (Type:deploy)
-        Description: Deploy ESXi 5.x - 6.5 in a multi-frame environment containing a pair of ImageStreamer appliances. T
+        Description: Deploy ESXi 6.5 in a multi-frame environment containing a pair of ImageStreamer appliances. T
 his buildplan configures HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2020 Hewlett Packard Enterpris
 e Development LP. Licensed under the Apache License, Version 2.0  (the "License");...
 
@@ -133,7 +151,7 @@ Plan Scripts:
 
                Name: HPE - ESXi - generalize host configuration - 2017-07-12 (capture)
            FullName: 7e2df5f6-339b-4e2d-8ecf-c6d138340d63_planscript.json
-        Description: Remove personalization settings from ESXi 5.x and 6.x images
+        Description: Remove personalization settings from ESXi 6.x images
 
 
                Name: HPE - ESXi - generalize onetime - 2017-09-27 (capture)
