@@ -118,7 +118,7 @@ Note: The ports on which the physical NICs are configured for various connection
 
                     File name: HPE-ESXi-2020-12-10-v6.10.zip
                 Name (in manifest): HPE-ESXi-2020-12-10-v6.10
-                       Description: ImageStreamer artifacts for ESXi 5.x and ESXi 6.x till 6.5. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance with the License
+                       Description: ImageStreamer artifacts for ESXi 6.5. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance with the License
                              Dated: 2020-12-10 (15:28:13)
 
 --------------------------------------------------------------------------------
@@ -126,16 +126,17 @@ Note: The ports on which the physical NICs are configured for various connection
 Build Plans:
 
                Name: HPE- ESXi - deploy in single frame non-HA config-2020-12-10 (Type:deploy)
-        Description: Personalize ESXi 5.x - 6.5 image with single management NIC, hostname, domain name, root password and ssh settings. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0  (the "License");...
+        Description: Personalize ESXi 6.5 image with single management NIC, hostname, domain name, root password and ssh settings. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0  (the "License");...
 
 
                Name: HPE - ESXi - generalize full state -  2020-12-10 (Type:capture)
-        Description: Remove personalization settings from ESXi 5.x - 6.5 images.
+        Description: Remove personalization settings from ESXi 6.5 images.
                      (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the "License"); ...
 
 
                Name: HPE - ESXi - deploy with multiple management NIC HA config-2020-12-10 (Type:deploy)
-        Description: Deploy ESXi 5.x - 6.5 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0  (the "License");...
+        Description: Deploy ESXi 
+	6.5 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0  (the "License");...
 
 
 
@@ -153,7 +154,7 @@ Plan Scripts:
 
                Name: HPE - ESXi - generalize host configuration - 2017-07-12 (capture)
            FullName: 7e2df5f6-339b-4e2d-8ecf-c6d138340d63_planscript.json
-        Description: Remove personalization settings from ESXi 5.x and 6.x images
+        Description: Remove personalization settings from ESXi 6.x images
 
 
                Name: HPE - ESXi - generalize onetime - 2017-09-27 (capture)
