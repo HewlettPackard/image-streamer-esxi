@@ -10,17 +10,17 @@
 	- ESXi 7.0 (ESXi 7.0, ESXi 7 U1)
 
 ## Version History:
-HPE-ESXi-2021-07-26-v6.20.zip
+HPE-ESXi-2021-07-26-v6.10.zip
    - Modified MPIO script to remove default vmk0 - remove old MAC and portID
    - Plan script change to handle attributes when GI with multiple updates is used.
    - Modified iBFT script to handle iSCSI path DEAD issue when a non-HA build plan with one Deployment connection is used for deployment.
    - Modified "Clear - Network" script to handle/delete "iscsibootvswitch" creation in the Golden Image.
 
-HPE-ESXi-6.7-2020-10-27-v6.20.zip
+HPE-ESXi-6.7-2020-10-27-v6.10.zip
    - Modified script to remove default vSwitch and vmnic created on GI captured from i3s deployed node	
    - Has corrective action as per VMware knowledgebase 2148321 for remounting bootbank from /tmp to /sda
 
-HPE-ESXi-7.0-2021-05-10-v6.20.zip
+HPE-ESXi-7.0-2021-05-10-v6.10.zip
    - Use this Artifact for ESXi version 7.0 Update 2 and higher.
    
 ## Golden Image creation for ESXi 6.7/7.0:
