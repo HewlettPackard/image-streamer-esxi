@@ -16,7 +16,7 @@ HPE-ESXi-2021-07-26-v6.10.zip
    - Modified iBFT script to handle iSCSI path DEAD issue when a non-HA build plan with one Deployment connection is used for deployment.
    - Modified "Clear - Network" script to handle/delete "iscsibootvswitch" creation in the Golden Image.
 
-HPE-ESXi-6.7-2020-10-27-v6.10.zip
+HPE-ESXi-6.7-2021-01-21-v6.10.zip
    - Modified script to remove default vSwitch and vmnic created on GI captured from i3s deployed node	
    - Has corrective action as per VMware knowledgebase 2148321 for remounting bootbank from /tmp to /sda
 
