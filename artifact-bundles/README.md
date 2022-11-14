@@ -1,8 +1,9 @@
-# ESXi 5.x to ESXi 6.5 and ESXi 6.7 to ESXi 7.0 artifacts for ImageStreamer v6.40 release
+# ESXi 5.x to ESXi 6.5 and ESXi 6.7 to ESXi 7.0 and ESXi 8.0 artifacts for ImageStreamer v6.40 release
 ## Note:
 - For versions of ESXi 5.x to ESXi 6.5 Please use HPE-ESXi-xxxx-xx-xx-v6.40.zip Artifact Bundle
 - For versions of ESXi 6.7 and onwards Please use HPE-ESXi-6.7-xxxx-xx-xx-v6.40.zip Artifact Bundle
 - For versions of ESXi 7.0 Update 2 and onwards Please use HPE-ESXi-7.0-xxxx-xx-xx-v6.40.zip Artifact Bundle
+- For versions of ESXi 8.0 and onwards Please use HPE-ESXi-8.0-xxxx-xx-xx-v6.40.zip Artifact Bundle
 - All artifact bundles in this repo are compatible with ImageStreamer v6.40 release
 - Click on 'Branch:' drop down menu on this page to get artifact bundles for other ImageStreamer releases
 - The following ESXi versions are supported
@@ -10,6 +11,7 @@
 	- ESXi 6.5 (ESXi 6.5, ESXi 6.5 U1, ESXi 6.5 U2)
 	- ESXi 6.7 (ESXi 6.7, ESXi 6.7 U1, ESXi 6.7 U2, ESXi 6.7 U3)
 	- ESXi 7.0 (ESXi 7.0, ESXi 7.0 U1, ESXi 7.0 U2, ESXi 7.0 U3)
+	- ESXi 8.0
 
 ## Version History:
 HPE-ESXi-2021-07-26-v6.40.zip
@@ -26,25 +28,29 @@ HPE-ESXi-6.7-2021-01-21-v6.40.zip
 HPE-ESXi-7.0-2021-05-10-v6.40.zip
    - Use this Artifact for ESXi version 7.0 Update 2 and higher.
 
-## Golden Image creation for ESXi 6.7/7.0:
+HPE-ESXi-8.0-2022-11-03-v6.40.zip
+   - Modified "HPE - ESXi 8.0 - clear local - 2022-11-03" script to reload ibft data for ESXi 8.0
+   - other script's content remain same as in ESXi 7.0 Artifact bundle with name change
 
-An Image Streamer Golden Image for ESXi 6.7 is to be captured ‘as is’, without any generalization scripts. This also introduces a constraint that the ESXi 6.7 image to be captured, shouldn’t contain any personalization. 
+## Golden Image creation for ESXi 6.7/7.0/8.0:
+
+An Image Streamer Golden Image for ESXi 6.7, 7.0, 8.0 is to be captured ‘as is’, without any generalization scripts. This also introduces a constraint that the ESXi 6.7 image to be captured, shouldn’t contain any personalization. 
 Any personalization, if done on the host before capturing the image will be retained and should be overwritten during the subsequent deployments. 
 
 
-1. Ensure that you have access to ESXi 6.7/7.0 ISO file.
+1. Ensure that you have access to ESXi 6.7/7.0/8.0 ISO file.
 
 1. Create a server profile with “HPE - Foundation 1.0 - create empty OS Volume” as OS Deployment plan and a server hardware of desired hardware type. Set an appropriate value for volume size in MiB units, say 20480 MiB for ESXi 6.7 and below. The HPE Synergy Server will be configured for access to this empty OS Volume.
 
 1. Installing ESXi 7.0 and above versions requires a boot device that is a minimum of 8 GB for USB or SD devices, and 32 GB for other device types. When booting from a local disk, SAN or iSCSI LUN, a 32 GB disk is required to allow for the creation of system storage volumes, which include a boot partition, boot banks, and a VMFS-L based ESX-OSData volume.
 
-1. Launch iLO Integrated Remote Console of this server and set the ESXi 6.7/7.0 ISO file as virtual CD-ROM/DVD image file. Power on the server.
+1. Launch iLO Integrated Remote Console of this server and set the ESXi 6.7/7.0/8.0 ISO file as virtual CD-ROM/DVD image file. Power on the server.
 
-1. Install ESXi 6.7/7.0.
+1. Install ESXi 6.7/7.0/8.0.
 
 1. Reboot the Compute Blade. [required for the OS to create the state.tgz folder]
 
-1. To capture the ESXi 6.7/7.0 image:
+1. To capture the ESXi 6.7/7.0/8.0 image:
   
     1.  Shutdown the server gracefully by pressing F12, and shutting it down, or by giving ‘poweroff’ command from SSH console, or by, clicking on the Momentary Press from iLO console of the server.
 
@@ -52,7 +58,7 @@ Any personalization, if done on the host before capturing the image will be reta
 
     1.  Deploy another server with the golden image captured in previous step and build plan of your choice to boot the server.
 
-1. To install VIBs or updates via virtual media and then capture ESXi 6.7/7.0 image:
+1. To install VIBs or updates via virtual media and then capture ESXi 6.7/7.0/8.0 image:
 
     1. The golden Image should be captured only from an ESXi OS instance that is not personalized.
     
@@ -85,7 +91,7 @@ Any personalization, if done on the host before capturing the image will be reta
 
     1. Shutdown the server gracefully by pressing F12, and shutting it down, or by giving ‘poweroff’ command from SSH console, or by, clicking on the Momentary Press button.
     
-    1. Perform an as-is capture using "HPE - Foundation 1.0 - capture OS Volume as is" build plan to create the "as-is" golden image of the OS. (NOTE: There are no generalization - capture scripts for ESXi 6.7/7.0)
+    1. Perform an as-is capture using "HPE - Foundation 1.0 - capture OS Volume as is" build plan to create the "as-is" golden image of the OS. (NOTE: There are no generalization - capture scripts for ESXi 6.7/7.0/8.0)
 
 Note: The ports on which the physical NICs are configured for various connections defined in sever-profile/ server-profile template, before capturing the image, will be retained. Please ensure to use the same ports for subsequent deployments.
 
@@ -98,7 +104,7 @@ Note: The ports on which the physical NICs are configured for various connection
 
 --------------------------------------------------------------------------------
 
-                                File name: HPE-ESXi-2021-07-26-v6.40.zip
+                     File name: HPE-ESXi-2021-07-26-v6.40.zip
             Name (in manifest): HPE-ESXi-2021-07-26-v6.40
                    Description: ImageStreamer artifacts for ESXi 6.5. (c) Copyright 2018-2021 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance with the License
                          Dated: 2021-09-13 (19:21:11)
@@ -181,10 +187,15 @@ Plan Scripts:
        FullName: fc2101e0-f677-4d50-84ef-d22d7b3a7f2f_planscript.json
     Description: Configures HA for iSCSI boot path for ESXi.
                  This script can be used in multi frame environment containing a pair of ImageStreamer appliances.
-                File name: HPE-ESXi-6.7-2021-01-21-v6.40.zip
+
+
+--------------------------------------------------------------------------------
+                     File name: HPE-ESXi-6.7-2021-01-21-v6.40.zip
             Name (in manifest): HPE-ESXi-6.7-2021-01-21-v6.40
                    Description: Artifacts to verify Image Streamer installation and configuration. (c) Copyright 2017 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance.
                          Dated: 2021-02-19 (07:16:57)
+
+
 Build Plans:
 
            Name: HPE - ESXi 6.7 - deploy with multiple management NIC HA config - 2020-03-27 (Type:deploy)
@@ -193,6 +204,8 @@ Build Plans:
 
            Name: HPE - ESXi 6.7 - deploy in single frame non-HA config - 2021-01-21 (Type:deploy)
     Description: Deploy ESXi 6.7 in a single-frame environment containing one ImageStreamer appliance. This buildplan does not configure HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2020 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the "License"); ...
+
+
 Plan Scripts:
 
            Name: HPE - ESXi - repack state - 2017-03-15 (general)
@@ -269,10 +282,14 @@ Plan Scripts:
            Name: HPE - ESXi - configure management 2nd NIC HA - 2017-07-07 (deploy)
        FullName: c95da095-047e-430e-94c9-283ae34d18bb_planscript.json
     Description: Configure ESXi host management 2nd NIC for HA
-                File name: HPE-ESXi-7.0-2021-05-10-v6.40.zip
+
+--------------------------------------------------------------------------------
+                     File name: HPE-ESXi-7.0-2021-05-10-v6.40.zip
             Name (in manifest): HPE-ESXi-7.0-2021-05-10-v6.40
                    Description: Artifacts to verify Image Streamer installation and configuration. (c) Copyright 2021 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance
                          Dated: 2021-06-07 (19:53:53)
+
+
 Build Plans:
 
            Name: HPE - ESXi 7.0 - deploy in single frame non-HA config - 2021-05-10 (Type:deploy)
@@ -281,6 +298,8 @@ Build Plans:
 
            Name: HPE - ESXi 7.0 - deploy with multiple management NIC HA config - 2020-05-10 (Type:deploy)
     Description: Deploy ESXi 7.0 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2021 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the "License"); ...
+
+
 Plan Scripts:
 
            Name: HPE - ESXi 7.0 - set password - 2021-05-10 (deploy)
@@ -345,5 +364,89 @@ Plan Scripts:
 
            Name: HPE - ESXi 7.0 - mpio - configure iSCSI boot HA - 2021-05-10 (deploy)
        FullName: ff081a5b-2d33-4ef2-b3f6-6815feb64f0d_planscript.json
+    Description: Configures HA for iSCSI boot path for ESXi.
+                 This script can be used in multi frame environment containing a pair of ImageStreamer appliances.
+
+--------------------------------------------------------------------------------
+                     File name: HPE-ESXi-8.0-2022-11-03-v6.40.zip
+            Name (in manifest): HPE-ESXi-8.0-2022-11-03-v6.40
+                   Description: Artifacts to verify Image Streamer installation and configuration. (c) Copyright 2022 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the \"License\");you may not use this file except in compliance
+                         Dated: 2022-11-03 (19:18:03)
+
+
+Build Plans:
+
+           Name: HPE - ESXi 8.0 - deploy in single frame non-HA config - 2022-11-03 (Type:deploy)
+    Description: Deploy ESXi 8.0 in a single-frame environment containing one ImageStreamer appliance. This buildplan does not configure HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2022 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the "License"); ...
+
+
+           Name: HPE - ESXi 8.0 - deploy with multiple management NIC HA config - 2022-11-03 (Type:deploy)
+    Description: Deploy ESXi 8.0 in a multi-frame environment containing a pair of ImageStreamer appliances. This buildplan configures HA for iSCSI boot connections to ESXi volume. (c) Copyright 2018-2022 Hewlett Packard Enterprise Development LP. Licensed under the Apache License, Version 2.0 (the "License"); ...
+
+
+Plan Scripts:
+
+           Name: HPE - ESXi 8.0 - set password - 2022-11-03 (deploy)
+       FullName: 254f76d3-5db1-42d8-879b-5c49d98ba62d_planscript.json
+    Description: Configure host password
+
+
+           Name: HPE - ESXi 8.0 - configure management 1st NIC - 2022-11-03 (deploy)
+       FullName: 4e97b9c2-dc1a-41c6-95a1-b0227e89ce13_planscript.json
+    Description: Configure ESXi host management network and removes hard coded entries from esx.conf file
+
+
+           Name: HPE - ESXi 8.0 - configure ssh - 2022-11-03 (deploy)
+       FullName: ae974b14-9329-4145-a794-52c2b6ece8cf_planscript.json
+    Description: Configure ssh
+
+
+           Name: HPE - ESXi 8.0 - clear local - 2022-11-03 (general)
+       FullName: 57e7530d-48d6-4f35-af1a-4f55af691939_planscript.json
+    Description: Clear the contents of local.sh post personalization. Corrects the mount point. Refer VMware knowledgebase 2148321 for details
+
+
+           Name: HPE - ESXi 8.0 - configure iSCSI connection non-HA - 2022-11-03 (deploy)
+       FullName: 0557474c-6f0c-428b-85ec-11a38d4f3582_planscript.json
+    Description: Configures non-HA iSCSI boot path for ESXi. This script can be used in single frame environment containing one ImageStreamer appliance.
+
+
+           Name: HPE - ESXi 8.0 - create custom.tgz custom module - 2022-11-03 (general)
+       FullName: 50a7b1bd-a3ae-42bb-a4a7-77e95ea8cbc3_planscript.json
+    Description: Create 999.local.sh file inside /etc/rc.local.d/ and compress in to custom.tgz module
+
+
+           Name: HPE - ESXi 8.0 - add custom.tgz module to boot.conf  - 2022-11-03 (general)
+       FullName: b94740eb-a3df-4a0b-adfa-bb2d2da2e2f9_planscript.json
+    Description: add custom.tgz module to boot.cfg file in BOOTBANK1
+
+
+           Name: HPE - ESXi 8.0 - configure management 2nd NIC HA - 2022-11-03 (deploy)
+       FullName: f1beb2e2-a579-4a08-a7b4-e1af425a7f8f_planscript.json
+    Description: Configure ESXi host management 2nd NIC for HA
+
+
+           Name: HPE - ESXi 8.0 - repack custom.tgz module - 2022-11-03 (general)
+       FullName: e94ac466-9b5c-4191-ad9b-8348e9020015_planscript.json
+    Description: repack custom.tgz
+
+
+           Name: HPE - ESXi 8.0 - mount - 2022-11-03 (general)
+       FullName: 17d57591-9fdf-4da3-b10c-f89c8d22df03_planscript.json
+    Description: Mount ESXi /bootbank
+
+
+           Name: HPE - ESXi 8.0 - generalize Host - 2022-11-03 (general)
+       FullName: 5c9b2208-9ecb-46a4-bcce-a7ffd3b3ab5c_planscript.json
+    Description: Deletes all old vSwitches, VMKs and Portgroup from GI. Check /tmp/hpe.log for all the deleted entries
+
+
+           Name: HPE - ESXi 8.0 - umount - 2022-11-03 (general)
+       FullName: d787379c-0d1a-4cf3-b5c2-71ddcc24ae66_planscript.json
+    Description: Cleanup and unmount file systems
+
+
+           Name: HPE - ESXi 8.0 - mpio - configure iSCSI boot HA - 2022-11-03 (deploy)
+       FullName: 1d0c2fb7-80a4-4090-a81c-3417d249319f_planscript.json
     Description: Configures HA for iSCSI boot path for ESXi.
                  This script can be used in multi frame environment containing a pair of ImageStreamer appliances.
